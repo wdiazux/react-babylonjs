@@ -97,7 +97,9 @@ class Engine extends React.Component<EngineProps, EngineState> {
       console.log('context loss observable from Engine: ', eventData);
     })
 
-    window.addEventListener('resize', this.onResizeWindow)
+    if(typeof window !== 'undefined') {
+      window.addEventListener('resize', this.onResizeWindow)
+    }
 
     this.setState({canRender: true});
   }
@@ -119,7 +121,9 @@ class Engine extends React.Component<EngineProps, EngineState> {
   }
 
   componentWillUnmount () {
-    window.removeEventListener('resize', this.onResizeWindow);
+    if(typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.onResizeWindow);
+    }
   }
 
   render () {
